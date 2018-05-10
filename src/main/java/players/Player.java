@@ -49,6 +49,10 @@ public abstract class Player {
         this.inventory.remove(item);
     }
 
+    public void clearInventory(){
+        this.inventory.clear();
+    }
+
     public Designation getDesignation(){
         return getCharactertype().getDesignation();
     }

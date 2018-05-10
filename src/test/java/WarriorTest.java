@@ -53,6 +53,14 @@ public class WarriorTest {
         assertEquals(1, warrior.getInventoryCount());
     }
 
+    @Test
+    public void clearInventory(){
+        warrior.addItemToInventory(physicalItem);
+        warrior.addItemToInventory(physicalItem);
+        warrior.clearInventory();
+        assertEquals(0, warrior.getInventoryCount());
+    }
+
 
     @Test
     public void getCharacterType(){
