@@ -41,6 +41,14 @@ public abstract class Player {
         return this.inventory.size();
     }
 
+    public void addItemToInventory(Item item){
+        this.inventory.add(item);
+    }
+
+    public void removeItemFromInventory(Item item){
+        this.inventory.remove(item);
+    }
+
     public Designation getDesignation(){
         return getCharactertype().getDesignation();
     }

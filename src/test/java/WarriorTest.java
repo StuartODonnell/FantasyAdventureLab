@@ -1,3 +1,5 @@
+import items.Item;
+import items.ItemType;
 import org.junit.Before;
 import org.junit.Test;
 import players.CharacterType;
@@ -10,11 +12,15 @@ import static org.junit.Assert.assertNotNull;
 public class WarriorTest {
 
     Warrior warrior;
+    Item physicalItem;
+    Item magicItem;
 
     @Before
     public void setUp() {
 
         warrior = new Warrior(CharacterType.BARBARIAN);
+        physicalItem= new Item("Sword", ItemType.WEAPON, 10);
+        magicItem = new Item("Spell", ItemType.SPELL, 5);
 
     }
 
@@ -32,6 +38,21 @@ public class WarriorTest {
     public void getInventoryCount() {
         assertEquals(0, warrior.getInventoryCount());
     }
+
+    @Test
+    public void addItemToInventory(){
+        warrior.addItemToInventory(physicalItem);
+        assertEquals(1, warrior.getInventoryCount());
+    }
+
+    @Test
+    public void removeItemFromInventory(){
+        warrior.addItemToInventory(physicalItem);
+        warrior.addItemToInventory(physicalItem);
+        warrior.removeItemFromInventory(physicalItem);
+        assertEquals(1, warrior.getInventoryCount());
+    }
+
 
     @Test
     public void getCharacterType(){
