@@ -22,4 +22,16 @@ public class DragonTest {
     public void attack() {
         assertEquals(10, dragon.attack());
     }
+
+    @Test
+    public void takeDamage() {
+        dragon.decreaseHealth(10);
+        assertEquals(40, dragon.getHealth());
+    }
+
+    @Test
+    public void name() {
+        dragon.protect(10);
+        assertEquals(40, dragon.getHealth());
+    }
 }

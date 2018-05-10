@@ -12,6 +12,14 @@ public abstract class Creature {
         return health;
     }
 
+    public void increaseHealth(int value){
+        this.health += value;
+    }
+
+    public void decreaseHealth(int value){
+        this.health -= value;
+    }
+
     public abstract int attack();
 
 }
