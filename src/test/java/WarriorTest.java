@@ -77,7 +77,6 @@ public class WarriorTest {
         assertEquals(1, warrior.basicAttack());
     }
 
-
     @Test
     public void decreaseHealth() {
         warrior.decreaseHealth(10);
@@ -103,4 +102,23 @@ public class WarriorTest {
         warrior.decreaseSwag(10);
         assertEquals(10, warrior.getSwagbag());
     }
+
+    @Test
+    public void nothingEquipped() {
+        assertEquals(false, warrior.hasEquipped());
+    }
+
+    @Test
+    public void equipPhysicalItem() {
+        warrior.equip(physicalItem);
+        assertEquals(true, warrior.hasEquipped());
+    }
+
+    @Test
+    public void equipMagicalItem() {
+        warrior.equip(magicItem);
+        assertEquals(false, warrior.hasEquipped());
+    }
+
+
 }

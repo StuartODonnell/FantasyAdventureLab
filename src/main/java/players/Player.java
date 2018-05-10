@@ -2,6 +2,7 @@ package players;
 
 
 import items.Item;
+import items.ItemType;
 
 import java.util.ArrayList;
 
@@ -11,12 +12,14 @@ public abstract class Player {
     protected CharacterType charactertype;
     protected int swagbag;
     protected ArrayList<Item>inventory;
+    protected Item equipped;
 
     public Player(CharacterType charactertype) {
         this.charactertype = charactertype;
         this.health =   100;
         this.swagbag = 0;
         this.inventory = new ArrayList<>();
+        this.equipped = null;
     }
 
     public int getHealth() {
@@ -71,6 +74,38 @@ public abstract class Player {
 
     public void decreaseSwag(int value){
         this.swagbag -= value;
+    }
+
+    public void unequip(){
+        this.equipped = null;
+    }
+
+    public void equip(Item item){
+        if(canEquip(item)) {
+            this.equipped = item;
+        }
+    }
+
+    public boolean canEquip(Item item){
+        if((charactertype.getDesignation() == Designation.WARRIOR)&(item.getType() == ItemType.WEAPON)){
+            return true;
+        }
+
+        if((charactertype.getDesignation() == Designation.MAGE)&(item.getType() == ItemType.SPELL)){
+            return true;
+        }
+
+        if((charactertype.getDesignation() == Designation.HEALER)&(item.getType() == ItemType.HEALING)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasEquipped(){
+        if (this.equipped != null){
+            return true;
+        }
+        return false;
     }
 
 }
