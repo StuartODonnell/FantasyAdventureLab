@@ -34,4 +34,12 @@ public class MageTest {
         mage.dismissDefender();
         assertEquals(false, mage.hasDefender());
     }
+
+    @Test
+    public void defenderTakeDamage() {
+        mage.summonDefender(dragon);
+        mage.decreaseHealth(10);
+        assertEquals(40, dragon.getHealth());
+        assertEquals(100, mage.getHealth());
+    }
 }

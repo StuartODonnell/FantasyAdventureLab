@@ -29,4 +29,12 @@ public class Mage extends Player {
         }
     }
 
+    public void decreaseHealth(int value){
+        if(hasDefender()){
+            this.defender.protect(value);
+            return;
+        }
+        this.health -= value;
+    }
+
 }
