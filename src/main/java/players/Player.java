@@ -23,9 +23,6 @@ public abstract class Player {
         return health;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
 
     public CharacterType getCharactertype() {
         return charactertype;
@@ -35,20 +32,33 @@ public abstract class Player {
         return swagbag;
     }
 
-    public void setSwagbag(int swagbag) {
-        this.swagbag = swagbag;
-    }
 
     public int basicAttack(){
         return 1;
     }
 
-    public int getInventroyCount(){
+    public int getInventoryCount(){
         return this.inventory.size();
     }
 
     public Designation getDesignation(){
         return getCharactertype().getDesignation();
+    }
+
+    public void increaseHealth(int value){
+        this.health += value;
+    }
+
+    public void decreaseHealth(int value){
+        this.health -= value;
+    }
+
+    public void increaseSwag(int value){
+        this.swagbag += value;
+    }
+
+    public void decreaseSwag(int value){
+        this.swagbag -= value;
     }
 
 }
