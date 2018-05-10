@@ -40,6 +40,7 @@ public abstract class Player {
         return 1;
     }
 
+
     public int getInventoryCount(){
         return this.inventory.size();
     }
@@ -106,6 +107,17 @@ public abstract class Player {
             return true;
         }
         return false;
+    }
+
+    public int useEquipped(){
+        if(hasEquipped()){
+            if(charactertype.getDesignation() == Designation.HEALER){
+                return (equipped.getPower() * -1);
+            }
+
+            return equipped.getPower();
+        }
+       return basicAttack();
     }
 
 }

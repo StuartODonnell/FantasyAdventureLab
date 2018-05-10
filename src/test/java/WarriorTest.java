@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import players.CharacterType;
 import players.Designation;
+import players.Healer;
 import players.Warrior;
 
 import static org.junit.Assert.assertEquals;
@@ -12,15 +13,19 @@ import static org.junit.Assert.assertNotNull;
 public class WarriorTest {
 
     Warrior warrior;
+    Healer healer;
     Item physicalItem;
     Item magicItem;
+    Item healingItem;
 
     @Before
     public void setUp() {
 
         warrior = new Warrior(CharacterType.BARBARIAN);
+        healer = new Healer(CharacterType.CLERIC);
         physicalItem= new Item("Sword", ItemType.WEAPON, 10);
         magicItem = new Item("Spell", ItemType.SPELL, 5);
+        healingItem = new Item("Potion", ItemType.HEALING, 10);
 
     }
 
@@ -120,5 +125,15 @@ public class WarriorTest {
         assertEquals(false, warrior.hasEquipped());
     }
 
+    @Test
+    public void useEquippedCleric() {
+        healer.equip(healingItem);
+        assertEquals(-10, healer.useEquipped());
+    }
 
+    @Test
+    public void useEquippedBarbarian() {
+        warrior.equip(physicalItem);
+        assertEquals(10, warrior.useEquipped());
+    }
 }
